@@ -1,0 +1,23 @@
+<h2>Mon panier</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id produit</th>
+        <th scope="col">Name</th>
+        <th scope="col">Prix unitaire</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dp of panier.values()">
+        <th scope="row">{{dp.product.id}}</th>
+        <td>{{dp.product.title}}</td>
+        <td>{{dp.product.price}}</td>
+        <td><input [id]="dp.product.id" min="1" max="100" type="number" [value]="dp.q" (change)="qChange(r.id,r.value)" #r/></td>
+        <td>{{prixT((dp.product.price),(r.value))}}</td>
+      </tr>    
+    </tbody>
+  </table>
+  <br/>
+  <button type="submit" (click)="buyAction()" class="btn btn-secondary rounded-pill">Acheter</button>			
